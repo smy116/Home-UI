@@ -59,7 +59,7 @@ class caiyun():
             #有预警信息
             result = sources["result"]["alert"]["content"][0]
             if cache == True:
-                self.cache.save("weather_alert", json.dumps(result))
+                self.cache.save("weather_alert", result)
                 pass
             return result
             pass
@@ -85,7 +85,7 @@ class caiyun():
             "description"]
 
         if cache == True:
-            self.cache.save("now_weather", json.dumps(result))
+            self.cache.save("now_weather", result)
             pass
         return result
 
@@ -142,7 +142,7 @@ class caiyun():
         ]
 
         if cache == True:
-            self.cache.save("future_weather", json.dumps(result))
+            self.cache.save("future_weather", result)
             pass
         return result
 
@@ -194,6 +194,6 @@ class bmap():
         struct_time = time.strptime(
             result['result']['routes'][0]['arrive_time'], "%Y-%m-%d %H:%M:%S")
         arrive_time['xj'] = time.strftime('%H:%M', struct_time)
-        self.cache.save("arrive_time", json.dumps(arrive_time))
+        self.cache.save("arrive_time", arrive_time)
 
         return arrive_time

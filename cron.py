@@ -16,4 +16,4 @@ bmap.dest()
 
 x = cache()
 nowtime = time.time()
-x.save("last_update",str(round(nowtime * 1000)))
+x.save("last_update",round(nowtime * 1000))
