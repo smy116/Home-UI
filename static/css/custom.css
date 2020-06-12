@@ -30,14 +30,12 @@ html::-webkit-scrollbar {
 
 /*主页面部分 */
 
-.weather-box {
-    margin-top: 10px;
-}
 
 .home-temp {
     color: #f8f8f9;
     font-size: 100px;
     margin-left: 20px;
+    margin-bottom: -20px;
 }
 
 .home-weather {
@@ -63,6 +61,7 @@ html::-webkit-scrollbar {
 
 .alert-icon {
     height: 60PX;
+    margin: 2px;
 }
 
 .weather-icon {
@@ -111,6 +110,10 @@ html::-webkit-scrollbar {
 .ivu-card-body {
     font-size: 18px;
     color: #515a6e;
+}
+
+.commute-panel {
+    margin-top: 26px;
 }
 
 .dest-time {

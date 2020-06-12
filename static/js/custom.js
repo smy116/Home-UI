@@ -23,6 +23,7 @@ var app = new Vue({
         d4_icon: "",
         d4_weather: "",
         d4_temp: "",
+        alert_list: "",
         arrive_bf: "",
         arrive_xj: "",
         last_update: "",
@@ -60,6 +61,7 @@ function update_home_data() {
             app.d4_icon = json["future_weather"][3]["icon"];
             app.d4_weather = json["future_weather"][3]["cnname"];
             app.d4_temp = json["future_weather"][3]["temperature"];
+            app.alert_list = json["weather_alert"];
 
             //预计到达时间
             app.arrive_bf = json['arrive_time']['bf'];

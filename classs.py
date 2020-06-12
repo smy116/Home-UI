@@ -7,7 +7,8 @@ import json, time
 class caiyun():
     cache = cache()
     key = config().CAIYUN_KEY
-    local = "112.9583,28.2329"
+    local = "112.9583,28.2329"  #金域国际
+    #local = "128.3316,45.4519"
 
     skycon = {
         "CLEAR_DAY": ["晴", "/img/icon-weather/100d.png"],
@@ -32,7 +33,72 @@ class caiyun():
         "WIND": ["大风", "/img/icon-weather/207d.png"]
     }
 
-    #local = "109.9578,27.5406"
+    alert = {
+        "0101": ["台风蓝色预警", "/img/icon-alert/0101.png"],
+        "0201": ["暴雨蓝色预警", "/img/icon-alert/0201.png"],
+        "0301": ["暴雪蓝色预警", "/img/icon-alert/0301.png"],
+        "0401": ["寒潮蓝色预警", "/img/icon-alert/0401.png"],
+        "0501": ["大风蓝色预警", "/img/icon-alert/0501.png"],
+        "0601": ["沙尘暴蓝色预警", "/img/icon-alert/0601.png"],
+        "0701": ["高温蓝色预警", "/img/icon-alert/0701.png"],
+        "0801": ["干旱蓝色预警", "/img/icon-alert/0801.png"],
+        "0901": ["雷电蓝色预警", "/img/icon-alert/0901.png"],
+        "1001": ["冰雹蓝色预警", "/img/icon-alert/1001.png"],
+        "1101": ["霜冻蓝色预警", "/img/icon-alert/1101.png"],
+        "1201": ["大雾蓝色预警", "/img/icon-alert/1201.png"],
+        "1301": ["霾蓝色预警", "/img/icon-alert/1301.png"],
+        "1401": ["道路结冰蓝色预警", "/img/icon-alert/1401.png"],
+        "1501": ["森林火灾蓝色预警", "/img/icon-alert/1501.png"],
+        "1601": ["雷雨大风蓝色预警", "/img/icon-alert/1601.png"],
+        "0102": ["台风黄色预警", "/img/icon-alert/0102.png"],
+        "0202": ["暴雨黄色预警", "/img/icon-alert/0202.png"],
+        "0302": ["暴雪黄色预警", "/img/icon-alert/0302.png"],
+        "0402": ["寒潮黄色预警", "/img/icon-alert/0402.png"],
+        "0502": ["大风黄色预警", "/img/icon-alert/0502.png"],
+        "0602": ["沙尘暴黄色预警", "/img/icon-alert/0602.png"],
+        "0702": ["高温黄色预警", "/img/icon-alert/0702.png"],
+        "0802": ["干旱黄色预警", "/img/icon-alert/0802.png"],
+        "0902": ["雷电黄色预警", "/img/icon-alert/0902.png"],
+        "1002": ["冰雹黄色预警", "/img/icon-alert/1002.png"],
+        "1102": ["霜冻黄色预警", "/img/icon-alert/1102.png"],
+        "1202": ["大雾黄色预警", "/img/icon-alert/1202.png"],
+        "1302": ["霾黄色预警", "/img/icon-alert/1302.png"],
+        "1402": ["道路结冰黄色预警", "/img/icon-alert/1402.png"],
+        "1502": ["森林火灾黄色预警", "/img/icon-alert/1502.png"],
+        "1602": ["雷雨大风黄色预警", "/img/icon-alert/1602.png"],
+        "0103": ["台风橙色预警", "/img/icon-alert/0103.png"],
+        "0203": ["暴雨橙色预警", "/img/icon-alert/0203.png"],
+        "0303": ["暴雪橙色预警", "/img/icon-alert/0303.png"],
+        "0403": ["寒潮橙色预警", "/img/icon-alert/0403.png"],
+        "0503": ["大风橙色预警", "/img/icon-alert/0503.png"],
+        "0603": ["沙尘暴橙色预警", "/img/icon-alert/0603.png"],
+        "0703": ["高温橙色预警", "/img/icon-alert/0703.png"],
+        "0803": ["干旱橙色预警", "/img/icon-alert/0803.png"],
+        "0903": ["雷电橙色预警", "/img/icon-alert/0903.png"],
+        "1003": ["冰雹橙色预警", "/img/icon-alert/1003.png"],
+        "1103": ["霜冻橙色预警", "/img/icon-alert/1103.png"],
+        "1203": ["大雾橙色预警", "/img/icon-alert/1203.png"],
+        "1303": ["霾橙色预警", "/img/icon-alert/1303.png"],
+        "1403": ["道路结冰橙色预警", "/img/icon-alert/1403.png"],
+        "1503": ["森林火灾橙色预警", "/img/icon-alert/1503.png"],
+        "1603": ["雷雨大风橙色预警", "/img/icon-alert/1603.png"],
+        "0104": ["台风红色预警", "/img/icon-alert/0104.png"],
+        "0204": ["暴雨红色预警", "/img/icon-alert/0204.png"],
+        "0304": ["暴雪红色预警", "/img/icon-alert/0304.png"],
+        "0404": ["寒潮红色预警", "/img/icon-alert/0404.png"],
+        "0504": ["大风红色预警", "/img/icon-alert/0504.png"],
+        "0604": ["沙尘暴红色预警", "/img/icon-alert/0604.png"],
+        "0704": ["高温红色预警", "/img/icon-alert/0704.png"],
+        "0804": ["干旱红色预警", "/img/icon-alert/0804.png"],
+        "0904": ["雷电红色预警", "/img/icon-alert/0904.png"],
+        "1004": ["冰雹红色预警", "/img/icon-alert/1004.png"],
+        "1104": ["霜冻红色预警", "/img/icon-alert/1104.png"],
+        "1204": ["大雾红色预警", "/img/icon-alert/1204.png"],
+        "1304": ["霾红色预警", "/img/icon-alert/1304.png"],
+        "1404": ["道路结冰红色预警", "/img/icon-alert/1404.png"],
+        "1504": ["森林火灾红色预警", "/img/icon-alert/1504.png"],
+        "1604": ["雷雨大风红色预警", "/img/icon-alert/1604.png"]
+    }
 
     #获取数据
     def get_json_data(self):
@@ -57,13 +123,20 @@ class caiyun():
         #判断是否有预警信息
         if sources["result"]["alert"]["content"]:
             #有预警信息
-            result = sources["result"]["alert"]["content"][0]
+            result = sources["result"]["alert"]["content"]
+
+            #遍历添加预警图标
+            for i in range(len(result)):
+                result[i]["name"] = self.alert[result[i]["code"]][0]
+                result[i]["icon"] = self.alert[result[i]["code"]][1]
+
             if cache == True:
                 self.cache.save("weather_alert", result)
                 pass
             return result
             pass
-
+        #删除原有预警信息
+        self.cache.save("weather_alert", None)
         return False
 
     #获取实时天气数据

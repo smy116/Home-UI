@@ -18,6 +18,12 @@ def get_home_data():
 
     result['last_update'] = x.get("last_update")
 
+    alert = x.get("weather_alert")
+
+    if alert != None:
+        result['weather_alert'] = alert
+        pass
+
     return result
 
 

@@ -54,28 +54,29 @@
                                 <i-col span="6">
                                     <p>今天</p>
                                     <img :src="d1_icon" style="width: 60px">
-                                    <p>{{d1_weather}}</p>
-                                    <p>{{d1_temp}}</p>
+                                    <p>{{d1_weather}} {{d1_temp}}</p>
                                 </i-col>
                                 <i-col span="6">
                                     <p>明天</p>
                                     <img :src="d2_icon" style="width: 60px">
-                                    <p>{{d2_weather}}</p>
-                                    <p>{{d2_temp}}</p>
+                                    <p>{{d2_weather}} {{d2_temp}}</p>
                                 </i-col>
                                 <i-col span="6">
                                     <p>后天</p>
                                     <img :src="d3_icon" style="width: 60px">
-                                    <p>{{d3_weather}}</p>
-                                    <p>{{d3_temp}}</p>
+                                    <p>{{d3_weather}} {{d3_temp}}</p>
                                 </i-col>
                                 <i-col span="6">
                                     <p>大后天</p>
                                     <img :src="d4_icon" style="width: 60px">
-                                    <p>{{d4_weather}}</p>
-                                    <p>{{d4_temp}}</p>
+                                    <p>{{d4_weather}} {{d4_temp}}</p>
                                 </i-col>
                             </row>
+                        </div>
+                        <div class="alert-box">
+                            <span v-for="item in alert_list">
+                                <img :src="item.icon" class="alert-icon">
+                            </span>
                         </div>
                         <div class="clock-box">
                             <p class="clock-time" v-html="now_time"></p>
@@ -85,10 +86,6 @@
 
                     <!--右半边屏幕-->
                     <i-col span="12">
-                        <div class="alert-box">
-                            <img src="" class="alert-icon">
-
-                        </div>
                         <row>
                             <i-col span="20" offset="2">
                                 <card :bordered="false" class="commute-panel">
