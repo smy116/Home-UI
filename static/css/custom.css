@@ -1,0 +1,143 @@
+/*通用及顶栏部分 */
+body {
+    width: 1024px;
+    height: 600px;
+
+}
+
+html {
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+html::-webkit-scrollbar {
+    display: none
+}
+
+
+.notification {
+    display: inline-block;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    height: 36px;
+    width: 400px;
+    z-index: 20;
+    text-align: right;
+    font-size: 0;
+    padding-right: 4px;
+}
+
+/*主页面部分 */
+
+.weather-box {
+    margin-top: 10px;
+}
+
+.home-temp {
+    color: #f8f8f9;
+    font-size: 100px;
+    margin-left: 20px;
+}
+
+.home-weather {
+    margin-top: 26px;
+    color: #f8f8f9;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.home-humidity {
+    font-size: 16px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+.alert-box {
+    margin-top: 10px;
+    margin-bottom: 4px;
+    height: 66px;
+    text-align: center;
+}
+
+.alert-icon {
+    height: 60PX;
+}
+
+.weather-icon {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.rain-describe {
+    text-align: center;
+    font-size: 16px;
+}
+
+.future-weather {
+    margin-top: 20px;
+}
+
+.future-weather>.ivu-row>.ivu-col {
+    text-align: center;
+    border-right: 2px solid #f8f8f9;
+}
+
+.future-weather>.ivu-row>.ivu-col:last-child {
+    text-align: center;
+    border-right: 0;
+}
+
+.clock-box {
+    text-align: left;
+    margin-left: 20px;
+    position: absolute;
+    left: 0px;
+    top: 370px;
+}
+
+
+.clock-date {
+    font-size: 40px;
+}
+
+.clock-time {
+    font-size: 80px;
+    margin-top: 0px;
+    margin-bottom: -20px;
+}
+
+.ivu-card-body {
+    font-size: 18px;
+    color: #515a6e;
+}
+
+.dest-time {
+    color: #ed4014;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/*天气云图部分 */
+
+.mask {
+    position: absolute;
+    width: 1024px;
+    height: 600px;
+    z-index: 2;
+    filter: alpha(opacity=0);
+    opacity: 0;
+}
+
+
+/*通勤助手部分 */
+.dest-panel {
+    top: 10px;
+    left: 3850px;
+    width: 1024px;
+    position: fixed;
+    z-index: 10;
+    filter: alpha(opacity=85);
+    opacity: 0.85;
+}

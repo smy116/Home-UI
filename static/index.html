@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <title>HomeUI</title>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/view-design@4.2.0/dist/iview.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/view-design@4.2.0/dist/styles/iview.min.css">
+    <link rel="stylesheet" href="/css/custom.css">
+
+</head>
+<style>
+    .ivu-tabs-bar {
+        margin-bottom: 0px;
+    }
+</style>
+
+<body>
+
+    <div id="app">
+        <div class="notification">
+
+        </div>
+        <tabs @on-click="init_commute_map" v-model="active_tab">
+            <tab-pane icon="md-home" label="主页面" name="home" style="background-color: #17233d;color: #f8f8f9;">
+                <row>
+                    <!--左半边屏幕-->
+                    <i-col span="12">
+                        <div class="weather-box">
+                            <row>
+                                <i-col span="8">
+                                    <p class="home-temp">{{now_temp}}</p>
+                                </i-col>
+                                <i-col span="8">
+                                    <p class="home-weather">{{now_weather}}</p>
+                                    <p class="home-humidity">相对湿度{{now_humidity}}</p>
+                                </i-col>
+                                <i-col span="8">
+
+                                    <div class="weather-icon">
+                                        <img :src="now_weather_icon">
+                                    </div>
+                                </i-col>
+                            </row>
+                        </div>
+                        <div class="rain-describe">{{now_rain_description}}</div>
+                        <div class="future-weather">
+                            <row>
+                                <i-col span="6">
+                                    <p>今天</p>
+                                    <img :src="d1_icon" style="width: 60px">
+                                    <p>{{d1_weather}}</p>
+                                    <p>{{d1_temp}}</p>
+                                </i-col>
+                                <i-col span="6">
+                                    <p>明天</p>
+                                    <img :src="d2_icon" style="width: 60px">
+                                    <p>{{d2_weather}}</p>
+                                    <p>{{d2_temp}}</p>
+                                </i-col>
+                                <i-col span="6">
+                                    <p>后天</p>
+                                    <img :src="d3_icon" style="width: 60px">
+                                    <p>{{d3_weather}}</p>
+                                    <p>{{d3_temp}}</p>
+                                </i-col>
+                                <i-col span="6">
+                                    <p>大后天</p>
+                                    <img :src="d4_icon" style="width: 60px">
+                                    <p>{{d4_weather}}</p>
+                                    <p>{{d4_temp}}</p>
+                                </i-col>
+                            </row>
+                        </div>
+                        <div class="clock-box">
+                            <p class="clock-time" v-html="now_time"></p>
+                            <p class="clock-date" v-html="now_date"></p>
+                        </div>
+                    </i-col>
+
+                    <!--右半边屏幕-->
+                    <i-col span="12">
+                        <div class="alert-box">
+                            <img src="" class="alert-icon">
+
+                        </div>
+                        <row>
+                            <i-col span="20" offset="2">
+                                <card :bordered="false" class="commute-panel">
+                                    <p slot="title">数据更新于
+                                        <i-time :time="last_update" />
+                                    </p>
+                                    <p>乘坐公交 预计 <span class="dest-time">{{arrive_bf}}</span> 到达 -> 泊富广场</p>
+                                    <p>乘坐公交 预计 <span class="dest-time">{{arrive_xj}}</span> 到达 -> 湘江集团</p>
+                                </card>
+                            </i-col>
+                        </row>
+                    </i-col>
+                </row>
+
+            </tab-pane>
+            <tab-pane icon="ios-information-circle" label="行情资讯" name="info">
+
+            </tab-pane>
+            <tab-pane icon="md-cloud" label="天气云图" name="weather">
+                <!--遮罩层-->
+                <div class="mask"></div>
+                <div style="width:1024px; height:565px; overflow:hidden">
+                    <div style=" margin-top:-62px;">
+                        <iframe style="width: 1024px;height: 626px;"
+                            src="http://www.caiyunapp.com/map/#112.9597,28.2313" frameborder="no" scrolling="no"
+                            allowtransparency="yes"></iframe>
+                    </div>
+                </div>
+            </tab-pane>
+            <tab-pane icon="ios-navigate" label="通勤助手" name="commute">
+
+                <div style="width:100%; height:100%; overflow:hidden">
+                    <div>
+                        <div class="dest-panel">
+                            <card style="width:230px;text-align:center">
+                                <p slot="title">选择目的地</p>
+                                <radio-group type="button" size="large" v-model="commute_dest"
+                                    @on-change="init_commute_map">
+                                    <radio label="泊富广场"></radio>
+                                    <radio label="湘江集团"></radio>
+                                </radio-group>
+                                <Divider></Divider>
+                                <h4>预计到达{{ commute_dest }}时间</h4>
+                                <h1>{{ map_dest_time }}</h1>
+                            </card>
+
+                        </div>
+                    </div>
+                    <div id="map-container" style="width:1024px; height:565px; overflow:hidden"></div>
+                </div>
+            </tab-pane>
+            <tab-pane icon="md-wifi" label="家庭网络" name="network">
+
+            </tab-pane>
+        </tabs>
+    </div>
+
+</body>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=N96B9E2P96FvIWIgQT9gvRHu"></script>
+<script type="text/javascript" src="/js/custom.js"></script>
