@@ -11,22 +11,21 @@ var app = new Vue({
         now_weather_icon: "",
         now_humidity: "",
         now_rain_description: "",
-        d1_icon: "",
-        d1_weather: "",
-        d1_temp: "",
-        d2_icon: "",
-        d2_weather: "",
-        d2_temp: "",
-        d3_icon: "",
-        d3_weather: "",
-        d3_temp: "",
-        d4_icon: "",
-        d4_weather: "",
-        d4_temp: "",
         alert_list: "",
-        arrive_bf: "",
-        arrive_xj: "",
         last_update: "",
+        deivce_table_title: [{
+                title: '设备名称',
+                key: 'hostname'
+            },
+            {
+                title: 'IP地址',
+                key: 'ipaddr'
+            },
+            {
+                title: 'MAC地址',
+                key: 'macaddr'
+            }
+        ],
     }
 })
 
@@ -69,6 +68,9 @@ function update_home_data() {
 
             //数据更新时间
             app.last_update = Number(json['last_update']);
+
+            //设备在线列表
+            app.deivce_table_data = json['route_info']['leases'];
         });
 
 }

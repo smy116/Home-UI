@@ -34,10 +34,10 @@
                         <div class="weather-box">
                             <row>
                                 <i-col span="8">
-                                    <p class="home-temp">{{now_temp}}</p>
+                                    <p class="home-temp" v-text="now_temp"></p>
                                 </i-col>
                                 <i-col span="8">
-                                    <p class="home-weather">{{now_weather}}</p>
+                                    <p class="home-weather" v-text="now_weather"></p>
                                     <p class="home-humidity">相对湿度{{now_humidity}}</p>
                                 </i-col>
                                 <i-col span="8">
@@ -48,7 +48,7 @@
                                 </i-col>
                             </row>
                         </div>
-                        <div class="rain-describe">{{now_rain_description}}</div>
+                        <div class="rain-describe" v-text="now_rain_description"></div>
                         <div class="future-weather">
                             <row>
                                 <i-col span="6">
@@ -92,8 +92,8 @@
                                     <p slot="title">数据更新于
                                         <i-time :time="last_update" />
                                     </p>
-                                    <p>现在出发 预计 <span class="dest-time">{{arrive_bf}}</span> 到达 -> 泊富广场</p>
-                                    <p>现在出发 预计 <span class="dest-time">{{arrive_xj}}</span> 到达 -> 湘江集团</p>
+                                    <p>现在出发 预计 <span class="dest-time" v-text="arrive_bf"></span> 到达 -> 泊富广场</p>
+                                    <p>现在出发 预计 <span class="dest-time" v-text="arrive_xj"></span> 到达 -> 湘江集团</p>
                                 </card>
                             </i-col>
                         </row>
@@ -138,18 +138,29 @@
                 </div>
             </tab-pane>
             <tab-pane icon="md-wifi" label="家庭网络" name="network" style="background-color: #17233d;color: #f8f8f9;">
-                <row>
-                    <!--左半边屏幕-->
-                    <i-col span="12">
-                        <card :bordered="false" class="wifi-device">
-                            <p slot="title">当前连接的设备</p>
-                            <i-table height="200"></i-table>
-                        </card>
-                    </i-col>
-                    <!--右半边屏幕-->
-                    <i-col span="12">
+
+                <card :bordered="false" class="wifi-device" style="margin-left: 10px;margin-right: 10px">
+                    <p slot="title">当前在线的设备（已过滤智能家居设备）</p>
+                    <i-table height="300" stripe :columns="deivce_table_title" :data="deivce_table_data">
+                    </i-table>
+                </card>
+                <row style="margin-top:15px;">
+                    <i-col span="14" offset="5">
+                        <row>
+                            <i-col span="8">
+                                <img src="\img\WIFI-QR.png" alt="" style="width: 140px;">
+                            </i-col>
+                            <i-col span="16">
+                                <h2>使用自带浏览器扫码连接访客网络</h2>
+                                <p style="font-size: 20px;">账号：guest</p>
+                                <p style="font-size: 20px;">密码：38043804</p>
+                                <br>
+                                <p style="font-size: 16px;">每次可使用240分钟</p>
+                            </i-col>
+                        </row>
                     </i-col>
                 </row>
+
             </tab-pane>
         </tabs>
     </div>

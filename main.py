@@ -17,6 +17,7 @@ def get_home_data():
     result['arrive_time'] = x.get("arrive_time")
 
     result['last_update'] = x.get("last_update")
+    result['route_info'] = x.get("route_info")
 
     alert = x.get("weather_alert")
 
