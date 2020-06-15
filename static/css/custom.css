@@ -144,3 +144,8 @@ html::-webkit-scrollbar {
     filter: alpha(opacity=85);
     opacity: 0.85;
 }
+
+/*家庭网络部分 */
+.wifi-device {
+    margin-top: 10px;
+}

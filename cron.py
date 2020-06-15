@@ -1,6 +1,5 @@
-
 from cache import cache
-from classs import caiyun,bmap
+from classs import caiyun, bmap, route
 import time
 
 print("update caiyun!")
@@ -14,6 +13,10 @@ print("update dest!")
 bmap = bmap()
 bmap.dest()
 
+print("update route info!")
+route = route()
+route.get_all()
+
 x = cache()
 nowtime = time.time()
-x.save("last_update",round(nowtime * 1000))
+x.save("last_update", round(nowtime * 1000))

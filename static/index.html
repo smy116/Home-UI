@@ -92,8 +92,8 @@
                                     <p slot="title">数据更新于
                                         <i-time :time="last_update" />
                                     </p>
-                                    <p>乘坐公交 预计 <span class="dest-time">{{arrive_bf}}</span> 到达 -> 泊富广场</p>
-                                    <p>乘坐公交 预计 <span class="dest-time">{{arrive_xj}}</span> 到达 -> 湘江集团</p>
+                                    <p>现在出发 预计 <span class="dest-time">{{arrive_bf}}</span> 到达 -> 泊富广场</p>
+                                    <p>现在出发 预计 <span class="dest-time">{{arrive_xj}}</span> 到达 -> 湘江集团</p>
                                 </card>
                             </i-col>
                         </row>
@@ -137,8 +137,19 @@
                     <div id="map-container" style="width:1024px; height:565px; overflow:hidden"></div>
                 </div>
             </tab-pane>
-            <tab-pane icon="md-wifi" label="家庭网络" name="network">
-
+            <tab-pane icon="md-wifi" label="家庭网络" name="network" style="background-color: #17233d;color: #f8f8f9;">
+                <row>
+                    <!--左半边屏幕-->
+                    <i-col span="12">
+                        <card :bordered="false" class="wifi-device">
+                            <p slot="title">当前连接的设备</p>
+                            <i-table height="200"></i-table>
+                        </card>
+                    </i-col>
+                    <!--右半边屏幕-->
+                    <i-col span="12">
+                    </i-col>
+                </row>
             </tab-pane>
         </tabs>
     </div>
