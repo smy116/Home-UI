@@ -19,11 +19,13 @@ var app = new Vue({
             },
             {
                 title: 'IP地址',
-                key: 'ipaddr'
+                key: 'ipaddr',
+                width: 150
             },
             {
                 title: 'MAC地址',
-                key: 'macaddr'
+                key: 'macaddr',
+                width: 150
             }
         ],
     }

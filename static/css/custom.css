@@ -149,3 +149,12 @@ html::-webkit-scrollbar {
 .wifi-device {
     margin-top: 10px;
 }
+
+.wifi-qr-box {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.wifi-qr-box>img {
+    margin: 10px;
+}
