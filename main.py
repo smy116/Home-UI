@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from cache import cache
+from config import config
 import json
 
 app = FastAPI()
@@ -11,6 +12,8 @@ def get_home_data():
     x = cache()
 
     result = {}
+
+    result['DISPLAY_MODE'] = config().DISPLAY_MODE
 
     result['now_weather'] = x.get("now_weather")
     result['future_weather'] = x.get("future_weather")

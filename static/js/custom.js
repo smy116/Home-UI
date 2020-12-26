@@ -13,6 +13,7 @@ var app = new Vue({
         now_rain_description: "",
         alert_list: "",
         last_update: "",
+        double_element: "",
         deivce_table_title: [{
                 title: '设备名称',
                 key: 'hostname'
@@ -73,6 +74,17 @@ function update_home_data() {
 
             //设备在线列表
             app.deivce_table_data = json['route_info']['leases'];
+
+            //切换显示模式
+            double_MODE = document.getElementsByClassName("double_element");
+            if (json['DISPLAY_MODE'] == "double") {
+                app.double_element = {}
+            } else {
+                app.double_element = {
+                    "display": 'none'
+                }
+            }
+
         });
 
 }

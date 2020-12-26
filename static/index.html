@@ -5,12 +5,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
     <title>HomeUI</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/view-design@4.2.0/dist/iview.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.19.2/dist/axios.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/view-design@4.4.0/dist/iview.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios@0.21.1/dist/axios.min.js"></script>
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/view-design@4.2.0/dist/styles/iview.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/view-design@4.4.0/dist/styles/iview.min.css">
     <link rel="stylesheet" href="/css/custom.css">
 
 </head>
@@ -93,7 +93,9 @@
                                         <i-time :time="last_update" />
                                     </p>
                                     <p>现在出发 预计 <span class="dest-time" v-text="arrive_bf"></span> 到达 -> 泊富广场</p>
-                                    <p>现在出发 预计 <span class="dest-time" v-text="arrive_xj"></span> 到达 -> 湘江集团</p>
+                                    <p :style="double_element">现在出发 预计 <span class="dest-time"
+                                            v-text="arrive_xj"></span>
+                                        到达 -> 湘江集团</p>
                                 </card>
                             </i-col>
                         </row>
@@ -125,7 +127,7 @@
                                 <radio-group type="button" size="large" v-model="commute_dest"
                                     @on-change="init_commute_map">
                                     <radio label="泊富广场"></radio>
-                                    <radio label="湘江集团"></radio>
+                                    <radio :style="double_element" label="湘江集团"></radio>
                                 </radio-group>
                                 <Divider></Divider>
                                 <h4>预计到达{{ commute_dest }}时间</h4>
