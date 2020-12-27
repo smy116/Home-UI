@@ -8,7 +8,6 @@ class caiyun():
     cache = cache()
     key = config().CAIYUN_KEY
     local = "112.9583,28.2329"  #金域国际
-    #local = "128.3316,45.4519"
 
     skycon = {
         "CLEAR_DAY": ["晴", "/img/icon-weather/100d.png"],
@@ -225,8 +224,12 @@ class bmap():
     key = config().BMAP_KEY
 
     def dest(self):
+
+        # 金隅国际经纬度
         home_point = "28.238791,112.964822"
+        # 泊富广场经纬度
         bf_point = "28.214646,112.99186"
+        # 金茂大厦经纬度
         xj_point = "28.202384,112.91111"
 
         #泊富预计时间
